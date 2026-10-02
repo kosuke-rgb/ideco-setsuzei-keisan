@@ -254,7 +254,7 @@ footer.site-footer a { color: var(--accent); }
   <header class="masthead">
     <h1>iDeCo（確定拠出年金）節税シミュレーター</h1>
     <p class="lede">年収・職業区分・毎月の掛金を入力するだけで、iDeCo(個人型確定拠出年金)で年間いくら節税できるか、何年でいくら貯まるかの目安をすぐに計算します。</p>
-    <span class="updated-note">計算式 最終確認日: 2026年10月1日（公務員の掛金上限引き上げ(2024年12月〜月額2万円)に対応済み）</span>
+    <span class="updated-note">計算式 最終確認日: 2026年10月2日（令和8年度税制改正の基礎控除（合計所得489万円以下は104万円）に対応、公務員の掛金上限引き上げ(2024年12月〜月額2万円)に対応済み）</span>
   </header>
 
   <div class="notice-box">
@@ -456,13 +456,16 @@ footer.site-footer a { color: var(--accent); }
     return 1950000;
   }
 
-  // 所得税の基礎控除（令和7・8年分の時限措置。国税庁「基礎控除の見直し等」にもとづく）
+  // 所得税の基礎控除（令和8年分。本則62万円＋特例加算：合計所得489万円以下は42万円、655万円以下は5万円。
+  // 令和8年度税制改正・国税庁タックスアンサーNo.1199にもとづく。引数は給与所得＝合計所得金額とみなす）
   function basicDeduction(salaryIncome) {
-    if (salaryIncome <= 1320000) return 950000;
-    if (salaryIncome <= 3360000) return 880000;
-    if (salaryIncome <= 4890000) return 680000;
-    if (salaryIncome <= 6550000) return 630000;
-    return 580000;
+    if (salaryIncome <= 4890000) return 1040000;
+    if (salaryIncome <= 6550000) return 670000;
+    if (salaryIncome <= 23500000) return 620000;
+    if (salaryIncome <= 24000000) return 480000;
+    if (salaryIncome <= 24500000) return 320000;
+    if (salaryIncome <= 25000000) return 160000;
+    return 0;
   }
 
   function socialInsurance(income, ageGroup) {
