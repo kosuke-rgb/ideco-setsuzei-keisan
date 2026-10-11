@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>iDeCo（確定拠出年金）節税シミュレーター</title>
+<title>iDeCo節税シミュレーター｜2027年からの上限6.2万円にも対応【令和8年分】</title>
 <meta name="description" content="年収・職業区分・毎月の掛金を入れるだけで、iDeCo(個人型確定拠出年金)で毎年いくら節税できるか、何年でいくら貯まるかの目安をすぐに計算できる無料ツールです。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://webtools-labs.com/ideco-setsuzei-keisan/">
@@ -31,7 +31,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="webtools-labs">
-<meta property="og:title" content="iDeCo（確定拠出年金）節税シミュレーター">
+<meta property="og:title" content="iDeCo節税シミュレーター｜2027年からの上限6.2万円にも対応【令和8年分】">
 <meta property="og:description" content="年収・職業区分・毎月の掛金を入れるだけで、iDeCoの年間節税額と将来の累計節税額の目安をすぐに計算できます。">
 <meta property="og:url" content="https://webtools-labs.com/ideco-setsuzei-keisan/">
 <meta property="og:image" content="https://webtools-labs.com/ideco-setsuzei-keisan/og-image.png">
@@ -286,6 +286,20 @@ footer.site-footer a { color: var(--accent); }
     </div>
     <div class="field-row">
       <div class="field">
+        <label for="rule">掛金の上限（制度の時期）</label>
+        <select id="rule">
+          <option value="now" selected>現在の上限（2026年11月拠出分まで）</option>
+          <option value="2027">2027年1月拠出分からの新しい上限（月6.2万円など）</option>
+        </select>
+      </div>
+      <div class="field" id="employerField" style="display:none">
+        <label for="employerContribution">勤務先の企業年金の掛金など（月額・円）</label>
+        <input type="number" id="employerContribution" min="0" step="1000" value="0">
+        <div class="field-hint">企業型DCの会社の掛金や、DBの「他制度掛金相当額」。新しい上限は月62,000円からこの額を引いた額です</div>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
         <label for="category">職業区分（掛金の上限が変わります）</label>
         <select id="category">
           <option value="68000">自営業・フリーランス（第1号被保険者、上限月68,000円）</option>
@@ -358,8 +372,38 @@ footer.site-footer a { color: var(--accent); }
         </tbody>
       </table>
     </div>
-    <p>たとえば企業年金のない会社員が月62,000円（年744,000円）を拠出すると、所得税率10%の人で、所得税と住民税を合わせて年およそ15万円の節税になる計算です。上限が上がっても、掛金は60歳まで原則として引き出せないため、生活費に無理のない金額にすることが大切です。</p>
-    <p class="disclaimer">金融機関各社（楽天証券・りそな銀行など）の案内にもとづく。上の計算ツールは2026年の上限で計算しています。</p>
+    <p>たとえば企業年金のない会社員（年収600万円・40歳未満）が月62,000円（年744,000円）を拠出すると、所得税と住民税を合わせて年およそ13.7万円の節税になる計算です（今の上限の月23,000円では約5.6万円）。上の計算ツールで「2027年1月拠出分からの新しい上限」を選ぶと、自分の条件で計算できます。上限が上がっても、掛金は60歳まで原則として引き出せないため、生活費に無理のない金額にすることが大切です。</p>
+    <p class="disclaimer">金融機関各社（楽天証券・りそな銀行など）の案内にもとづく。上の計算ツールは、上限の時期を選んで計算できます。</p>
+  </section>
+
+  <section>
+    <h2>年収別 2027年からの節税額の比較（会社員・企業年金なし・40歳未満）</h2>
+    <p>上限まで拠出した場合の、1年間の節税額（所得税＋住民税）を、今の上限（月23,000円）と2027年1月拠出分からの上限（月62,000円）で比べました。</p>
+    <div class="ref-table" style="overflow-x:auto">
+      <table style="white-space:nowrap">
+        <thead><tr><th>額面年収</th><th class="num">月23,000円<br>（今の上限）</th><th class="num">月62,000円<br>（2027年1月〜）</th><th class="num">増える節税額</th></tr></thead>
+        <tbody>
+          <tr><td>300万円</td><td class="num">41,690円</td><td class="num">101,916円</td><td class="num">+60,226円</td></tr>
+          <tr><td>400万円</td><td class="num">41,690円</td><td class="num">112,382円</td><td class="num">+70,692円</td></tr>
+          <tr><td>500万円</td><td class="num">41,690円</td><td class="num">112,381円</td><td class="num">+70,691円</td></tr>
+          <tr><td>600万円</td><td class="num">55,779円</td><td class="num">137,293円</td><td class="num">+81,514円</td></tr>
+          <tr><td>800万円</td><td class="num">83,959円</td><td class="num">226,324円</td><td class="num">+142,365円</td></tr>
+          <tr><td>1,000万円</td><td class="num">83,959円</td><td class="num">226,324円</td><td class="num">+142,365円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="disclaimer">上の計算ツールと同じ方法で計算しています。年収が低いと、掛金を増やしても所得税が0円になった時点でそれ以上は減らないため、節税額の伸びは小さくなります。掛金は60歳まで原則引き出せないので、無理のない金額で考えましょう。</p>
+  </section>
+
+  <section>
+    <h2>受け取るときの税金（一時金・年金）</h2>
+    <p>iDeCoは掛金を払うときに税金が安くなる一方、受け取るときには税金がかかります。ただし受け取り方ごとに大きな控除があり、多くの人は税金がかからないか、少額で済みます。</p>
+    <ul>
+      <li><strong>一時金で受け取る</strong>: 退職金と同じ「退職所得」になり、退職所得控除が使えます。掛金を払った年数が勤続年数の代わりになり、20年以下なら1年あたり40万円（最低80万円）、20年を超える部分は1年あたり70万円です。たとえば20年間拠出したなら800万円まで税金がかかりません。控除を超えた分も、その1/2にだけ課税されます。</li>
+      <li><strong>年金で受け取る</strong>: 公的年金と同じ「雑所得」になり、公的年金等控除が使えます。65歳以上なら、公的年金と合わせて年110万円までは雑所得が0円になります（公的年金以外の所得が1,000万円以下の場合）。</li>
+      <li><strong>一時金と年金の併用</strong>: 一部を一時金、残りを年金で受け取ることもできます（金融機関によります）。</li>
+    </ul>
+    <p>会社の退職金と同じ時期にiDeCoの一時金を受け取ると、退職所得控除が調整されて税金が増えることがあります。受け取る順番や時期で税金が変わるため、近づいたら金融機関や税務署に確認しましょう。退職金の税金は<a href="https://webtools-labs.com/taishokukin-zei-keisan/">退職金の税金計算ツール</a>で計算できます。</p>
   </section>
 
   <div class="ad-slot">
@@ -554,6 +598,28 @@ footer.site-footer a { color: var(--accent); }
     '23000-fuyou': 23000
   };
 
+  // 2027年1月拠出分からの上限（2026年12月施行の制度改正）。企業年金がある会社員・公務員は62,000円から企業年金の掛金などを引く
+  var LIMITS_2027 = {
+    '68000': 75000,
+    '23000': 62000,
+    '20000-dc': 62000,
+    '20000-db': 62000,
+    '20000-kou': 62000,
+    '23000-fuyou': 23000
+  };
+  var NEEDS_EMPLOYER = { '20000-dc': true, '20000-db': true, '20000-kou': true };
+  var ruleSelect = document.getElementById('rule');
+  var employerField = document.getElementById('employerField');
+  var employerInput = document.getElementById('employerContribution');
+
+  function currentLimit() {
+    var cat = categorySelect.value;
+    if (ruleSelect.value !== '2027') return LIMITS[cat];
+    var base = LIMITS_2027[cat];
+    if (NEEDS_EMPLOYER[cat]) base -= Math.max(0, Number(employerInput.value) || 0);
+    return Math.max(0, base);
+  }
+
   var incomeInput = document.getElementById('income');
   var ageGroupSelect = document.getElementById('ageGroup');
   var categorySelect = document.getElementById('category');
@@ -575,17 +641,19 @@ footer.site-footer a { color: var(--accent); }
   }
 
   function onCategoryChange() {
-    var limit = LIMITS[categorySelect.value];
+    var is2027 = ruleSelect.value === '2027';
+    employerField.style.display = (is2027 && NEEDS_EMPLOYER[categorySelect.value]) ? '' : 'none';
+    var limit = currentLimit();
     contributionInput.max = limit;
     if (Number(contributionInput.value) > limit) contributionInput.value = limit;
-    limitHint.textContent = 'この区分の上限は月額' + limit.toLocaleString('ja-JP') + '円です';
+    limitHint.textContent = (is2027 ? '2027年1月拠出分からの' : 'この区分の') + '上限は月額' + limit.toLocaleString('ja-JP') + '円です';
     render();
   }
 
   function render() {
     var income = Math.max(0, Number(incomeInput.value) || 0);
     var ageGroup = ageGroupSelect.value;
-    var limit = LIMITS[categorySelect.value];
+    var limit = currentLimit();
     var monthly = Math.min(limit, Math.max(0, Number(contributionInput.value) || 0));
     var years = Math.max(1, Number(yearsInput.value) || 1);
     var annualContribution = monthly * 12;
@@ -616,6 +684,14 @@ footer.site-footer a { color: var(--accent); }
   incomeInput.addEventListener('input', render);
   ageGroupSelect.addEventListener('change', render);
   categorySelect.addEventListener('change', onCategoryChange);
+  ruleSelect.addEventListener('change', function () {
+    var before = currentLimit();
+    onCategoryChange();
+    // 新しい上限に切り替えたときは、掛金を上限まで引き上げて比較しやすくする
+    if (ruleSelect.value === '2027' && Number(contributionInput.value) < currentLimit()) { contributionInput.value = currentLimit(); render(); }
+    if (ruleSelect.value === 'now' && Number(contributionInput.value) > before) { contributionInput.value = before; render(); }
+  });
+  employerInput.addEventListener('input', onCategoryChange);
   contributionInput.addEventListener('input', render);
   yearsInput.addEventListener('input', render);
 
