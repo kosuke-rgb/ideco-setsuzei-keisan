@@ -188,7 +188,7 @@ tr.best td { font-weight: 700; }
 tr.best { background: var(--best-bg); }
 
 .ref-table { overflow-x: auto; }
-.ref-table table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 460px; }
+.ref-table table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 0; }
 .ref-table th, .ref-table td { padding: 0.5rem 0.5rem; border-bottom: 1px solid var(--line); text-align: left; }
 .ref-table td.num { font-variant-numeric: tabular-nums; text-align: right; }
 
@@ -277,6 +277,15 @@ footer.site-footer a { color: var(--accent); }
 .pr-box .pr-cta-wrap { text-align: center; margin: 0.9rem 0 0; }
 .pr-box .pr-cta-wrap .pr-cta { font-size: 0.95rem; padding: 0.75rem 1.6rem; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
 .pr-box .pr-cta:hover { opacity: 0.85; }
+/* スマホで表が画面からはみ出さないように（2026-11-17） */
+@media (max-width: 600px) {
+  .ref-table table { font-size: 0.8rem; }
+  .ref-table th, .ref-table td { padding: 0.45rem 0.3rem; }
+  .ref-table th, .ref-table td:first-child { white-space: normal; }
+  .ref-table td.nw { white-space: nowrap; }
+  .ref-table th:first-child, .ref-table td:first-child { min-width: 5em; position: sticky; left: 0; z-index: 1; background: var(--bg); box-shadow: 1px 0 0 var(--line); }
+  .ref-table tr.best td:first-child, .ref-table tr.total td:first-child, .ref-table tr.next td:first-child, .ref-table tr.highlight td:first-child { background: var(--best-bg, var(--bg)); }
+}
 </style>
 </head>
 <body>
@@ -387,10 +396,10 @@ footer.site-footer a { color: var(--accent); }
       <table>
         <thead><tr><th>額面年収</th><th class="num">所得税率の目安</th><th class="num">年間節税額</th></tr></thead>
         <tbody>
-          <tr><td>350万円</td><td class="num">5%</td><td class="num">約3.6万円</td></tr>
-          <tr><td>500万円</td><td class="num">10%</td><td class="num">約4.6万円</td></tr>
-          <tr><td>700万円</td><td class="num">20%</td><td class="num">約7.3万円</td></tr>
-          <tr><td>1,200万円</td><td class="num">23%</td><td class="num">約8.0万円</td></tr>
+          <tr><td>350万円</td><td class="num nw">5%</td><td class="num nw">約3.6万円</td></tr>
+          <tr><td>500万円</td><td class="num nw">10%</td><td class="num nw">約4.6万円</td></tr>
+          <tr><td>700万円</td><td class="num nw">20%</td><td class="num nw">約7.3万円</td></tr>
+          <tr><td>1,200万円</td><td class="num nw">23%</td><td class="num nw">約8.0万円</td></tr>
         </tbody>
       </table>
     </div>
@@ -422,12 +431,12 @@ footer.site-footer a { color: var(--accent); }
       <table style="white-space:nowrap">
         <thead><tr><th>額面年収</th><th class="num">月23,000円<br>（今の上限）</th><th class="num">月62,000円<br>（2027年1月〜）</th><th class="num">増える節税額</th></tr></thead>
         <tbody>
-          <tr><td>300万円</td><td class="num">41,690円</td><td class="num">101,916円</td><td class="num">+60,226円</td></tr>
-          <tr><td>400万円</td><td class="num">41,690円</td><td class="num">112,382円</td><td class="num">+70,692円</td></tr>
-          <tr><td>500万円</td><td class="num">41,690円</td><td class="num">112,381円</td><td class="num">+70,691円</td></tr>
-          <tr><td>600万円</td><td class="num">55,779円</td><td class="num">137,293円</td><td class="num">+81,514円</td></tr>
-          <tr><td>800万円</td><td class="num">83,959円</td><td class="num">226,324円</td><td class="num">+142,365円</td></tr>
-          <tr><td>1,000万円</td><td class="num">83,959円</td><td class="num">226,324円</td><td class="num">+142,365円</td></tr>
+          <tr><td>300万円</td><td class="num nw">41,690円</td><td class="num nw">101,916円</td><td class="num nw">+60,226円</td></tr>
+          <tr><td>400万円</td><td class="num nw">41,690円</td><td class="num nw">112,382円</td><td class="num nw">+70,692円</td></tr>
+          <tr><td>500万円</td><td class="num nw">41,690円</td><td class="num nw">112,381円</td><td class="num nw">+70,691円</td></tr>
+          <tr><td>600万円</td><td class="num nw">55,779円</td><td class="num nw">137,293円</td><td class="num nw">+81,514円</td></tr>
+          <tr><td>800万円</td><td class="num nw">83,959円</td><td class="num nw">226,324円</td><td class="num nw">+142,365円</td></tr>
+          <tr><td>1,000万円</td><td class="num nw">83,959円</td><td class="num nw">226,324円</td><td class="num nw">+142,365円</td></tr>
         </tbody>
       </table>
     </div>
